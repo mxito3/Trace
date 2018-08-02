@@ -1,35 +1,32 @@
 pragma solidity ^0.4.16;
-
 library crabInformation
 {
-	    struct base 
-	{
-	    uint  time ;
-	    string opratorName;
-	}
+    
+  struct base 
+    {
+        uint  time ;
+        string opratorName;
+        
+    }
+    struct feed 
+    {
+        string feedName; //基础信息
+    }
 
-	struct feed {
-	      string name; //基础信息
-	      base baseInformation;
-	}
-
-	struct waterQuality{
-	    bool whetherQualified;
-	    string checkAgent;
-	    uint animalDensity;//蟹苗密度
-	    base baseInformation;
-	}
-	struct transfer{
-	    
-	    string from; //出发地
-	    string to;  //下一站 
-	    base baseInformation;  
-	}
-	struct store{
-	    uint temperature;
-	    uint wetness;
-	    base baseInformation;
-	}
+    struct waterQuality{
+        bool whetherQualified;
+        string checkAgent;
+        uint animalDensity;//蟹苗密度
+    }
+    struct transfer{
+        
+        string from; //出发地
+        string to;  //下一站 
+    }
+    struct store{
+        uint temperature;
+        uint wetness;
+    }
 
 }
 
@@ -37,112 +34,149 @@ library crabInformation
 contract crab
 { 
     uint id;
-    crabInformation.base initCrab;//初始加入时间
+    uint poolId;
+    crabInformation.base initInformation;
     crabInformation.feed[] feedInformation;
     crabInformation.waterQuality[] waterQualityInformation;
     crabInformation.transfer[] transferInformation;
     crabInformation.store[] storeInformation;
-    function crab (uint _id,string _opratorName) public  {
+    function crab (uint _id,string _opratorName,uint _poolId) public  {
         id=_id;
-        initCrab.time=now;
-        initCrab.opratorName=_opratorName;
+        initInformation.time=now;
+        initInformation.opratorName=_opratorName;
+        poolId=_poolId;
+    }
+    function changeFeed (string _feedName) public returns(bool res) 
+    {
+        feedInformation.push(crabInformation.feed(_feedName));
+        return true;
+
+    }
+    function changeWaterQuality (bool _whetherQualified,string _checkAgent,uint _animalDensity) public returns(bool res)  
+    {
+      
+        waterQualityInformation.push(crabInformation.waterQuality(_whetherQualified,_checkAgent,_animalDensity));
+        return true;
+    }
+    function changeTransfer(string from,string to) public returns(bool res) 
+    {
+        transferInformation.push(crabInformation.transfer(from,to));
+        return true;
+    }
+    function changeStore (uint temperature,uint wetness) public returns(bool res)
+    {
+        storeInformation.push(crabInformation.store(temperature,wetness));
+        return true;
     }
 
 }
 
 contract Trace {
     //修改时间
- 
+    
     mapping (uint => crab) crabs;
     mapping (uint => bool) exist;
-    event addcrab(uint id,string opratorName);
-    event changeFeed (uint id,string feedName,string opratorName);
-    event changeWaterQuality (uint id,bool whetherQualified,string checkAgent,uint crabDensity,string opratorName);
-    event changeTransferInformation (uint id,string from,string to,string opratorName);
-    event changeStoreInformation (uint id,uint temperature,uint wetness,string opratorName);
+    event addCrab(uint id,string opratorName);
+    event pushFeedInformation (uint id,string feedName,string opratorName);
+    event pushWaterQualityInformation (uint id,bool whetherQualified,string checkAgent,uint crabDensity,string opratorName);
+    event pushTransferInformation (uint id,string from,string to,string opratorName);
+    event pushStoreInformation (uint id,uint temperature,uint wetness,string opratorName);
+    crabInformation.base[] feedInfo;
+    crabInformation.base[] waterInfo;
+    crabInformation.base[] transferInfo;
+    crabInformation.base[] storeInfo;
+    
     modifier onlyOwner(address userAddress) { 
         require (msg.sender == userAddress); 
         _; 
     }
-
-    function Trace ()  {
+    
+    function Trace () public {
         
     }
     
-    function addcrab (uint _id,string _opratorName) public returns(bool res)  
+    function addcrab (uint _id,string _opratorName,uint _poolId) public returns(bool res)  
     {
         //判断是不是存在了
-        crabs[_id]=new crab(_id,_opratorName);
-        emit addcrab(_id,_opratorName);
+        crabs[_id]=new crab(_id,_opratorName,_poolId);
+        emit addCrab(_id,_opratorName);
         return true;
     }
-
-    function changeFeed (uint _id,string _feedName,string _opratorName) public returns(bool res) 
+    
+    function pushFeed(uint _id,string _feedName,string _opratorName) public returns(bool res)
     {
-        if(!exist[_id])
+        if(!existSuchCrab(_id))
         {
             return false;
         }
         else
         {
-            
-            
-            crabs[_id].feedInformation.push(
-                crabInformation.feed(
-                {
-                name:_feedName,
-                baseInformation:crabInformation.base
-                ({
-                    time:now,
-                    opratorName:_opratorName
-                })
-                }
-                ));
-            emit  changeFeed (_id,_feedName,_opratorName);
-            return true;
-        }
-    }
-
-    function changeWaterQuality (uint _id,bool _whetherQualified,string _checkAgent,uint _animalDensity,string _opratorName) public returns(bool res)  
-    {
-        if(!exist[_id])
-        {
-            return false;
-        }
-        else
-        {
-            crabs[_id].waterQualityInformation.push(crabInformation.waterQuality(_whetherQualified,_checkAgent,_animalDensity,crabInformation.base(now,_opratorName)));
-            emit changeWaterQuality (_id,_whetherQualified,_checkAgent,_animalDensity,_opratorName);
+            crabs[_id].changeFeed(_feedName);
+            feedInfo.push(crabInformation.base(now,_opratorName));
+            emit pushFeedInformation(_id,_feedName,_opratorName);
             return true;
         }
     }
     
-    function changeTransferInformation (uint _id,string from,string to,string _opratorName) public returns(bool res) 
+    
+    
+
+    function pushWaterQuality (uint _id,bool _whetherQualified,string _checkAgent,uint _animalDensity,string _opratorName) public returns(bool res)  
     {
-        if(!exist[_id])
+        if(!existSuchCrab(_id))
         {
             return false;
         }
         else
         {
-            crabs[_id].transferInformation.push(crabInformation.transferInformation(from,to,crabInformation.base(now,_opratorName)));
-            emit changeTransferInformation (_id,from,to,_opratorName);
+            crabs[_id].changeWaterQuality(_whetherQualified,_checkAgent,_animalDensity);
+            waterInfo.push(crabInformation.base(now,_opratorName));
+            emit pushWaterQualityInformation(_id,_whetherQualified,_checkAgent,_animalDensity,_opratorName);
+            return true;
+        }
+    }
+    
+    function pushTransfer (uint _id,string from,string to,string _opratorName) public returns(bool res) 
+    {
+        if(!existSuchCrab(_id))
+        {
+            return false;
+        }
+        else
+        {
+            crabs[_id].changeTransfer(from,to);
+            transferInfo.push(crabInformation.base(now,_opratorName));
+            emit pushTransferInformation(_id,from,to,_opratorName);
             return true;
         }
     }
 
     function changeStoreInformation (uint _id,uint temperature,uint wetness,string _opratorName) public returns(bool res)  
     {
-        if(!exist[_id])
+        if(!existSuchCrab(_id))
         {
             return false;
         }
         else
         {
-            crabs[_id].storeInformation.push(crabInformation.storeInformation(temperature,wetness,crabInformation.base(now,_opratorName)));
-            emit changeStoreInformation (_id,temperature,wetness,_opratorName);
+            crabs[_id].changeStore(temperature,wetness);
+            emit pushStoreInformation (_id,temperature,wetness,_opratorName);
+            storeInfo.push(crabInformation.base(now,_opratorName));
             return true;
         }
+    }
+
+    function existSuchCrab(uint id) public view returns(bool res)
+    {
+        if(exist[id]==true)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        
     }
 }
 
