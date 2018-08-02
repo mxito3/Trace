@@ -55,7 +55,11 @@ contract Trace {
  
     mapping (uint => crab) crabs;
     mapping (uint => bool) exist;
-
+    event addcrab(uint id,string opratorName);
+    event changeFeed (uint id,string feedName,string opratorName);
+    event changeWaterQuality (uint id,bool whetherQualified,string checkAgent,uint crabDensity,string opratorName);
+    event changeTransferInformation (uint id,string from,string to,string opratorName);
+    event changeStoreInformation (uint id,uint temperature,uint wetness,string opratorName);
     modifier onlyOwner(address userAddress) { 
         require (msg.sender == userAddress); 
         _; 
@@ -69,6 +73,7 @@ contract Trace {
     {
         //判断是不是存在了
         crabs[_id]=new crab(_id,_opratorName);
+        emit addcrab(_id,_opratorName);
         return true;
     }
 
@@ -93,6 +98,7 @@ contract Trace {
                 })
                 }
                 ));
+            emit  changeFeed (_id,_feedName,_opratorName);
             return true;
         }
     }
@@ -106,6 +112,7 @@ contract Trace {
         else
         {
             crabs[_id].waterQualityInformation.push(crabInformation.waterQuality(_whetherQualified,_checkAgent,_animalDensity,crabInformation.base(now,_opratorName)));
+            emit changeWaterQuality (_id,_whetherQualified,_checkAgent,_animalDensity,_opratorName);
             return true;
         }
     }
@@ -119,6 +126,7 @@ contract Trace {
         else
         {
             crabs[_id].transferInformation.push(crabInformation.transferInformation(from,to,crabInformation.base(now,_opratorName)));
+            emit changeTransferInformation (_id,from,to,_opratorName);
             return true;
         }
     }
@@ -132,6 +140,7 @@ contract Trace {
         else
         {
             crabs[_id].storeInformation.push(crabInformation.storeInformation(temperature,wetness,crabInformation.base(now,_opratorName)));
+            emit changeStoreInformation (_id,temperature,wetness,_opratorName);
             return true;
         }
     }
