@@ -33,13 +33,13 @@ library crabInformation
 
 contract crab
 { 
-    uint id;
-    uint poolId;
-    crabInformation.base initInformation;
-    crabInformation.feed[] feedInformation;
-    crabInformation.waterQuality[] waterQualityInformation;
-    crabInformation.transfer[] transferInformation;
-    crabInformation.store[] storeInformation;
+    uint public id;
+    uint public poolId;
+    crabInformation.base public initInformation;
+    crabInformation.feed[] public feedInformation;
+    crabInformation.waterQuality[] public waterQualityInformation;
+    crabInformation.transfer[] public transferInformation;
+    crabInformation.store[] public storeInformation;
     function crab (uint _id,string _opratorName,uint _poolId) public  {
         id=_id;
         initInformation.time=now;
@@ -74,22 +74,17 @@ contract crab
 contract Trace {
     //修改时间
     
-    mapping (uint => crab) crabs;
-    mapping (uint => bool) exist;
+    mapping (uint => crab) public crabs;
+    mapping (uint => bool) public exist;
     event addCrab(uint id,string opratorName);
     event pushFeedInformation (uint id,string feedName,string opratorName);
     event pushWaterQualityInformation (uint id,bool whetherQualified,string checkAgent,uint crabDensity,string opratorName);
     event pushTransferInformation (uint id,string from,string to,string opratorName);
     event pushStoreInformation (uint id,uint temperature,uint wetness,string opratorName);
-    crabInformation.base[] feedInfo;
-    crabInformation.base[] waterInfo;
-    crabInformation.base[] transferInfo;
-    crabInformation.base[] storeInfo;
-    
-    modifier onlyOwner(address userAddress) { 
-        require (msg.sender == userAddress); 
-        _; 
-    }
+    crabInformation.base[] public feedInfo;
+    crabInformation.base[] public waterInfo;
+    crabInformation.base[] public transferInfo;
+    crabInformation.base[] public storeInfo;
     
     function Trace () public {
         
