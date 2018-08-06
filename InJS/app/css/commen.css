@@ -1,0 +1,76 @@
+/*
+* @Author: YP
+* @Date:   2018-08-06 21:10:42
+* @Last Modified by:   YP
+* @Last Modified time: 2018-08-06 22:41:51
+*/
+
+#head
+{
+	position: relative;
+	width:80%;
+	margin: 0 auto;
+	height:60px;
+
+}
+#maincontent
+{		
+	text-align:center;
+	position: relative;
+	margin:0 auto;
+	width:80%;
+	height:300px;
+	border-bottom: solid 2px black;
+	margin-top:100px;
+}
+#footer
+{
+	text-align: center;
+	margin:0 auto;
+	width:80%;
+	
+}
+body,button,input,div
+{
+	margin:0px;
+	padding: 0px;
+	border: 0px;
+}
+#searchBar
+{
+	display:inline-block;
+	width:70%;
+	height: 40px;
+	border: solid 1px RGB(71,145,255);
+}
+#submitButton
+{
+	display: inline-block;
+	width: 80px;
+	height:40px;
+	background: RGB(51,133,255);
+	color: white;
+}
+#pushInfo
+{
+}
+
+#link
+{
+	position: absolute;
+	display: inline-block;
+	right:0px;
+	bottom: -20px;
+}
+#link  a
+{
+	height:30px;
+	width:50px;
+	color:RGB(51,133,255);
+	border-radius: 5px;
+}
+/*#title
+{
+	display: inline-block;
+	margin:0 auto;
+*/

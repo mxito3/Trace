@@ -1,0 +1,21 @@
+/*
+* @Author: YP
+* @Date:   2018-08-06 22:52:45
+* @Last Modified by:   YP
+* @Last Modified time: 2018-08-06 23:03:34
+*/
+#left
+{
+	width:30%;
+	border:solid 1px red;
+	float: left;
+	height: 100%;
+}
+#right
+{
+	width:65%;
+	border:solid 1px blue;
+	float: right;
+	height: 100%;
+}
+
