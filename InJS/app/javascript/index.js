@@ -378,7 +378,7 @@ $(document).ready(
         //app.pushFeed(1,'超级健康的饲料','yapie');
         //app.pushWaterQuality(1,true,"北京水质检测机构",50,'yapie');
        // app.pushTransfer(1,'天水','海南','yapie');
-        app.pushStore(1,35,30,'yapie');
+        //app.pushStore(1,35,30,'yapie');
         //console.log(app.contract.traceContract);
         //app.existSuchCrab(1);
         //监听提交按钮
