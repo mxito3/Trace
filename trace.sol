@@ -68,6 +68,19 @@ contract crab
         storeInformation.push(crabInformation.store(temperature,wetness));
         return true;
     }
+    function getLength(uint infoType)  public view returns(uint)
+    {
+        uint length=0;
+        if(infoType ==1 )
+        length=feedInformation.length;
+        else if(infoType ==2 )
+        length=waterQualityInformation.length;
+        else if(infoType ==3 )
+        length=transferInformation.length;
+        else if(infoType==4)
+        length=storeInformation.length;
+        return length;
+    }
 
 }
 
@@ -81,10 +94,10 @@ contract Trace {
     event pushWaterQualityInformation (uint id,bool whetherQualified,string checkAgent,uint crabDensity,string opratorName);
     event pushTransferInformation (uint id,string from,string to,string opratorName);
     event pushStoreInformation (uint id,uint temperature,uint wetness,string opratorName);
-    crabInformation.base[] public feedInfo;
-    crabInformation.base[] public waterInfo;
-    crabInformation.base[] public transferInfo;
-    crabInformation.base[] public storeInfo;
+    mapping (uint => crabInformation.base[]) public feedInfo;
+    mapping (uint => crabInformation.base[]) public waterInfo;
+    mapping (uint => crabInformation.base[]) public transferInfo;
+    mapping (uint => crabInformation.base[]) public storeInfo;
     
     function Trace () public {
         
@@ -94,6 +107,7 @@ contract Trace {
     {
         //判断是不是存在了
         crabs[_id]=new crab(_id,_opratorName,_poolId);
+        exist[_id]=true;
         emit addCrab(_id,_opratorName);
         return true;
     }
@@ -107,7 +121,7 @@ contract Trace {
         else
         {
             crabs[_id].changeFeed(_feedName);
-            feedInfo.push(crabInformation.base(now,_opratorName));
+            feedInfo[_id].push(crabInformation.base(now,_opratorName));
             emit pushFeedInformation(_id,_feedName,_opratorName);
             return true;
         }
@@ -125,7 +139,7 @@ contract Trace {
         else
         {
             crabs[_id].changeWaterQuality(_whetherQualified,_checkAgent,_animalDensity);
-            waterInfo.push(crabInformation.base(now,_opratorName));
+            waterInfo[_id].push(crabInformation.base(now,_opratorName));
             emit pushWaterQualityInformation(_id,_whetherQualified,_checkAgent,_animalDensity,_opratorName);
             return true;
         }
@@ -140,7 +154,7 @@ contract Trace {
         else
         {
             crabs[_id].changeTransfer(from,to);
-            transferInfo.push(crabInformation.base(now,_opratorName));
+            transferInfo[_id].push(crabInformation.base(now,_opratorName));
             emit pushTransferInformation(_id,from,to,_opratorName);
             return true;
         }
@@ -156,7 +170,7 @@ contract Trace {
         {
             crabs[_id].changeStore(temperature,wetness);
             emit pushStoreInformation (_id,temperature,wetness,_opratorName);
-            storeInfo.push(crabInformation.base(now,_opratorName));
+            storeInfo[_id].push(crabInformation.base(now,_opratorName));
             return true;
         }
     }
