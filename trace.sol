@@ -1,4 +1,5 @@
 pragma solidity ^0.4.16;
+pragma experimental ABIEncoderV2;
 library crabInformation
 {
     
@@ -67,6 +68,22 @@ contract crab
     {
         storeInformation.push(crabInformation.store(temperature,wetness));
         return true;
+    }
+    function getFeedInfo()  public view returns(crabInformation.feed[])
+    {
+        return feedInformation;
+    }
+    function getWaterInfo()  public view returns(crabInformation.waterQuality[])
+    {
+        return waterQualityInformation;
+    }
+    function getTransferInfo()  public view returns(crabInformation.transfer[])
+    {
+        return transferInformation;
+    }
+    function getStoreInfo()  public view returns(crabInformation.store[])
+    {
+        return storeInformation;
     }
     function getLength(uint infoType)  public view returns(uint)
     {
@@ -186,6 +203,19 @@ contract Trace {
             return false;
         }
         
+    }
+    function getLength(uint id,uint infoType)  public view returns(uint)
+    {
+        uint length=0;
+        if(infoType ==1 )
+        length=feedInfo[id].length;
+        else if(infoType ==2 )
+        length=waterInfo[id].length;
+        else if(infoType ==3 )
+        length=transferInfo[id].length;
+        else if(infoType==4)
+        length=storeInfo[id].length;
+        return length;
     }
 }
 
