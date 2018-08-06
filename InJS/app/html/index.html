@@ -5,17 +5,21 @@
     <title>index</title>
     <script type="text/javascript" src="../static/jquery.js"></script>
     <script type="text/javascript" src="./app.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/commen.css">
 </head>
 
 <body>
     <div id="head">
-        <h1>欢迎来到大闸蟹溯源系统</h1>
+        <div id="link">
+            <a href="./index.html">首页</a>
+            <a href="./introduce.html">产品介绍</a>
+            <a href="./pushMessage.html" id="pushInfo">数据上链</a>
+        </div>
     </div>
     <div id="maincontent">
-        <form method="post" action="">
-            <input type="text" name="crabId" placeholder="请输入闸蟹id进行溯源">
-            <input type="submit" name="">
-        </form>
+        <h1 id="title">大闸蟹溯源系统</h1>
+        <input type="text" name="crabId" placeholder="请输入闸蟹id进行溯源" id="searchBar">
+        <button id="submitButton">查询</button>
     </div>
     <div id="footer">
         <h1>designed by Yapie</h1>
