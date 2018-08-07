@@ -2,29 +2,90 @@
 <html>
 <head>
 	<title>push infoMation</title>
-	<link rel="stylesheet" type="text/css" href="../css/commen.css">
-	<link rel="stylesheet" type="text/css" href="../css/push.css">
+	<link rel="stylesheet" type="text/css" href="../app/css/commen.css">
+	<link rel="stylesheet" type="text/css" href="../app/css/push.css">
+	<script type="text/javascript" src="../../static/jquery.js"></script>
+	<script type="text/javascript" src="./app.js"></script>
+	<script type="text/javascript" src="../app/javascript/pushData.js"></script>
 </head>
 <body>
 	<div id="head">
+		<h1>大闸蟹溯源系统</h1>
         <div id="link">
         	<a href="./index.html">首页</a>
             <a href="./introduce.html">产品介绍</a>
             <a href="./pushMessage.html" id="pushInfo">数据上链</a>
         </div>
-        <h1>大闸蟹溯源系统</h1>
+
     </div>
     <div id="maincontent">
         <div id="left">	
-				<ul>
-					<li>添加新闸蟹</li>
-					<li>添加饲料信息</li>
-					<li>添加水质信息</li>
-					<li>添加转运信息</li>
-					<li>添加存储信息</li>
+        	<div id="left-top">
+        		<h2>数据上链</h2>
+        	</div>
+        	<div id="left-bottom">
+				<ul id="addSelect">
+					<li id="firstSelect" index="1">添加新闸蟹</li>
+					<li index="2">添加饲料信息</li>
+					<li index="3">添加水质信息</li>
+					<li index="4">添加转运信息</li>
+					<li index="5">添加存储信息</li>
 				</ul>
+			</div>
         </div>
-        <div id="right">        			
+        <div id="right">  
+        	<div id="addNew" class="operate" index="1">
+        		<h2>添加新闸蟹</h2>
+        		<div>
+        			<span>闸蟹ID</span><input type="text" name="crabId">
+        			<span>池塘ID</span><input type="text" name="poolId">
+        			<span>数据上链人</span><input type="text" name="addCrabOPerator">
+        			<button>上链</button>
+        		</div>
+        	</div> 
+        	<div id="addFeed" class="operate" index="2">
+        		<h2>添加饲料</h2>
+        		<div>
+        			<span>闸蟹ID</span><input type="text" name="crabId">
+        			<span>饲料名称</span><input type="text" name="feedName">
+        			<span>数据上链人</span><input type="text" name="operator">
+        			<button>上链</button>
+        		</div>
+        	</div> 
+        	<div id="addWaterQuality" class="operate" index="3">
+        		<h2>添加水质信息</h2>
+        		<div>
+        			<span>闸蟹ID</span><input type="text" name="crabId">
+        			<span>水质是否达标</span><input type="text" name="whetherQualified">
+        			<span>检测机构</span><input type="text" name="checkAgent">
+        			<span>闸蟹密度</span><input type="text" name="density">
+        			<span>数据上链人</span><input type="text" name="operator">
+        			<button>上链</button>
+        		</div>
+        	</div>    
+        	<div id="addTransfer" class="operate" index="4">
+        		<h2>添加转运信息</h2>
+        		<div>
+        			<span>闸蟹ID</span><input type="text" name="crabId">
+        			<span>起点</span><input type="text" name="from">
+        			<span>下一站</span><input type="text" name="to">
+        			<span>数据上链人</span><input type="text" name="operator">
+        			<button>上链</button>
+        		</div>
+        	</div>     			
+        	 <div id="addTransfer" class="operate" index="5">
+        		<h2>添加存储信息</h2>
+        		<div>
+        			<span>闸蟹ID</span><input type="text" name="crabId">
+        			<span>存储箱内温度</span><input type="text" name="temperature">
+        			<span>存储箱内湿度</span><input type="text" name="wetness">
+        			<span>数据上链人</span><input type="text" name="operator">
+        			<button>上链</button>
+        		</div>
+        	</div>			
+        </div>
+        <div id="positionContainer">
+        	.
         </div>
     </div>
     <div id="footer">
