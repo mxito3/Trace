@@ -1,0 +1,41 @@
+/*
+* @Author: YP
+* @Date:   2018-08-06 21:10:42
+* @Last Modified by:   YP
+* @Last Modified time: 2018-08-07 11:07:11
+*/
+#head
+{
+	height:60px;
+}
+
+#searchBar
+{
+	display:inline-block;
+	width:70%;
+	height: 40px;
+	border: solid 1px RGB(71,145,255);
+}
+#submitButton
+{
+	display: inline-block;
+	width: 80px;
+	height:40px;
+	background: RGB(51,133,255);
+	color: white;
+}
+#pushInfo
+{
+}
+
+#maincontent
+{
+	height:300px;
+	margin-top: 150px;
+	text-align:center;
+}
+/*#title
+{
+	display: inline-block;
+	margin:0 auto;
+*/

@@ -2,20 +2,124 @@
 * @Author: YP
 * @Date:   2018-08-06 22:52:45
 * @Last Modified by:   YP
-* @Last Modified time: 2018-08-06 23:03:34
+* @Last Modified time: 2018-08-07 11:36:47
 */
+
+#head
+{
+	height:20px;
+}
 #left
 {
-	width:30%;
-	border:solid 1px red;
+	width:20%;
 	float: left;
 	height: 100%;
+	text-align: center;
+	background:RGB(0,93,160);
 }
 #right
 {
-	width:65%;
-	border:solid 1px blue;
+	width:78%;
 	float: right;
 	height: 100%;
+	overflow: scroll;
+	background: RGB(242,242,242);
+}
+#addSelect
+{
+	
+}
+#left-top
+{
+	width:100%;
+	background: RGB(242,242,242);
+	
+	padding-top: 20px;
+	padding-bottom: 5px;
+}
+#left-top h2
+{
+	margin-bottom:5px; 
+	padding-bottom: 3px;
+	border-bottom: solid 3px RGB(39,174,97);
 }
 
+#right h2
+{
+	padding:20px 0px;
+}
+#left-bottom
+{
+	/*background:RGB(0,93,160);*/
+	position:  relative;
+		
+
+}
+#addSelect li
+{
+	cursor: pointer;
+	width:100%;
+	height:30px;
+	border-radius: 5px;
+	padding-top: 1em;
+	text-align: center;
+	color: white;
+}
+#addSelect li:hover
+{
+	background: RGB(51,133,255);
+}
+#maincontent
+{
+	/*background: RGB(242,242,242);*/
+	position: relative;
+	height:450px;
+
+}
+#firstSelect
+{
+
+	padding-top: 15px;
+	/*color:RGB(0,93,160);
+	border-bottom:solid 2px RGB(39,174,97);*/
+}
+#positionContainer
+{
+	background: white;
+}
+#left-top h2
+{
+
+}
+
+.operate div input
+{
+	display: block;
+	height:30px;
+	width:70%;
+	margin-top: 1em;
+	margin-left: 1em;
+}
+.operate div span
+{
+	display: block;
+	margin-top:1em;
+}
+.operate div button
+{
+	display: block;
+	background:RGB(51,133,255);
+	color:white;
+	width:100px;
+	height:35px;
+	margin-top: 1em;
+	border-radius: 10px;
+}
+#addNew
+{
+	/*display: block;*/
+}
+#right .operate
+{
+	display: none;
+}
