@@ -9,15 +9,43 @@
 var Push =Push|| {
     addCrab: function addCrab() {
         //获得数据
-        var id = $("input[name='crabId']").val();
+        var id = $("#addNew input[name='crabId']").val();
         var poolId = $("input[name='poolId']").val();
-        var addCrabOPerator = $("input[name='addCrabOPerator']").val();
-        console.log(id + poolId + addCrabOPerator);
-        app.addCrab(id,addCrabOPerator,poolId,Push.callback);
+        var operator = $("#addNew input[name='operator']").val();
+        // console.log(id + poolId + operator);
+        app.addCrab(id,operator,poolId,Push.callback);
     },
-    test:function()
-    {
-    	console.log("in push");
+    pushFeed:function () {
+        var id =  $("#addFeed input[name='crabId']").val();
+        var feedName = $("#addFeed input[name='feedName']").val();
+        var operator = $("#addFeed input[name='operator']").val();
+        app.pushFeed(id,feedName,operator,Push.callback)
+        // console.log(id+feedName+operator);
+    },
+    pushWaterQuality:function () {
+        var id =  $("#addWaterQuality input[name='crabId']").val();
+        var  whetherQualified = $("#addWaterQuality input[name='whetherQualified']").val();
+        var checkAgent = $("#addWaterQuality input[name='checkAgent']").val();
+        var density = $("#addWaterQuality input[name='density']").val();
+        var operator = $("#addWaterQuality input[name='operator']").val();
+        app.pushWaterQuality(id,whetherQualified,checkAgent,density,operator,Push.callback);
+        // app.pushwaterQuality(id,feedName,operator,Push.callback)
+    },
+    pushTransfer:function(){
+         var id =  $("#addTransfer input[name='crabId']").val();
+        var from= $("#addTransfer input[name='from']").val();
+        var to = $("#addTransfer input[name='to']").val();
+        var operator = $("#addTransfer input[name='operator']").val();
+        // console.log(id+"  "+from+"  "+to+"  "+operator);
+        app.pushTransfer(id,from,to,operator,Push.callback);
+    },
+    pushStore:function () {
+        var id =  $("#addStore input[name='crabId']").val();
+        var temperature= $("#addStore input[name='temperature']").val();
+        var wetness = $("#addStore input[name='wetness']").val();
+        var operator = $("#addStore input[name='operator']").val();
+        app.pushStore(id,temperature,wetness,operator,Push.callback);
+
     },
     callback:function(hash)
     {
@@ -33,9 +61,27 @@ $(
        // app.pushTransfer(1,'天水','海南','yapie');
         //app.pushStore(1,35,30,'yapie');
     $('#addNew div button').click(function() {
+        console.log("点击了")
         Push.addCrab();
     });
 
+    $('#addFeed div button').click(function() {
+        console.log("点击了")
+        Push.pushFeed();
+    });
+
+     $('#addWaterQuality div button').click(function() {
+        console.log("点击了")
+        Push.pushWaterQuality();
+    });
+     $('#addTransfer div button').click(function() {
+        console.log("点击了")
+        Push.pushTransfer();
+    });
+     $('#addStore div button').click(function() {
+        console.log("点击了")
+        Push.pushStore();
+    });
     //隐藏和显示并改变悬浮的li的背景
     var nowShow = 1;
     $('.operate[index="1"]').show();
@@ -43,7 +89,6 @@ $(
     $('#left-bottom ul li').click(function() {
         console.log($(this).attr("index"));
         index = $(this).attr("index");
-        // $('#firstSelect').css("background","#005da0");
         $('.operate[index=' + nowShow + ']').hide();
         $('.operate[index=' + index + ']').show();
         nowShow = index;

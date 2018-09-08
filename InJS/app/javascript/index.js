@@ -4,12 +4,12 @@ var Tx = require('ethereumjs-tx');
 // $.getScript('./app/javascript/pushData.js');
 window.app = {
     contract: {
-        traceAbi: [{"anonymous":false,"inputs":[{"indexed":false,"name":"id","type":"uint256"},{"indexed":false,"name":"temperature","type":"uint256"},{"indexed":false,"name":"wetness","type":"uint256"},{"indexed":false,"name":"opratorName","type":"string"}],"name":"pushStoreInformation","type":"event"},{"constant":false,"inputs":[{"name":"_id","type":"uint256"},{"name":"_opratorName","type":"string"},{"name":"_poolId","type":"uint256"}],"name":"addcrab","outputs":[{"name":"res","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":false,"name":"id","type":"uint256"},{"indexed":false,"name":"from","type":"string"},{"indexed":false,"name":"to","type":"string"},{"indexed":false,"name":"opratorName","type":"string"}],"name":"pushTransferInformation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"id","type":"uint256"},{"indexed":false,"name":"whetherQualified","type":"bool"},{"indexed":false,"name":"checkAgent","type":"string"},{"indexed":false,"name":"crabDensity","type":"uint256"},{"indexed":false,"name":"opratorName","type":"string"}],"name":"pushWaterQualityInformation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"id","type":"uint256"},{"indexed":false,"name":"feedName","type":"string"},{"indexed":false,"name":"opratorName","type":"string"}],"name":"pushFeedInformation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"id","type":"uint256"},{"indexed":false,"name":"opratorName","type":"string"}],"name":"addCrab","type":"event"},{"constant":false,"inputs":[{"name":"_id","type":"uint256"},{"name":"temperature","type":"uint256"},{"name":"wetness","type":"uint256"},{"name":"_opratorName","type":"string"}],"name":"changeStoreInformation","outputs":[{"name":"res","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_id","type":"uint256"},{"name":"_feedName","type":"string"},{"name":"_opratorName","type":"string"}],"name":"pushFeed","outputs":[{"name":"res","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_id","type":"uint256"},{"name":"from","type":"string"},{"name":"to","type":"string"},{"name":"_opratorName","type":"string"}],"name":"pushTransfer","outputs":[{"name":"res","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_id","type":"uint256"},{"name":"_whetherQualified","type":"bool"},{"name":"_checkAgent","type":"string"},{"name":"_animalDensity","type":"uint256"},{"name":"_opratorName","type":"string"}],"name":"pushWaterQuality","outputs":[{"name":"res","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"crabs","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"exist","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"id","type":"uint256"}],"name":"existSuchCrab","outputs":[{"name":"res","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"},{"name":"","type":"uint256"}],"name":"feedInfo","outputs":[{"name":"time","type":"uint256"},{"name":"opratorName","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"id","type":"uint256"},{"name":"infoType","type":"uint256"}],"name":"getLength","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"},{"name":"","type":"uint256"}],"name":"storeInfo","outputs":[{"name":"time","type":"uint256"},{"name":"opratorName","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"},{"name":"","type":"uint256"}],"name":"transferInfo","outputs":[{"name":"time","type":"uint256"},{"name":"opratorName","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"},{"name":"","type":"uint256"}],"name":"waterInfo","outputs":[{"name":"time","type":"uint256"},{"name":"opratorName","type":"string"}],"payable":false,"stateMutability":"view","type":"function"}],
-        traceAddress: '0x69A042879948e7BfEaCd11CE5829D092d1a761fc',
+        traceAbi: [{ "anonymous": false, "inputs": [{ "indexed": false, "name": "id", "type": "uint256" }, { "indexed": false, "name": "temperature", "type": "uint256" }, { "indexed": false, "name": "wetness", "type": "uint256" }, { "indexed": false, "name": "opratorName", "type": "string" }], "name": "pushStoreInformation", "type": "event" }, { "constant": false, "inputs": [{ "name": "_id", "type": "uint256" }, { "name": "_opratorName", "type": "string" }, { "name": "_poolId", "type": "uint256" }], "name": "addcrab", "outputs": [{ "name": "res", "type": "bool" }], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "anonymous": false, "inputs": [{ "indexed": false, "name": "id", "type": "uint256" }, { "indexed": false, "name": "from", "type": "string" }, { "indexed": false, "name": "to", "type": "string" }, { "indexed": false, "name": "opratorName", "type": "string" }], "name": "pushTransferInformation", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "name": "id", "type": "uint256" }, { "indexed": false, "name": "whetherQualified", "type": "bool" }, { "indexed": false, "name": "checkAgent", "type": "string" }, { "indexed": false, "name": "crabDensity", "type": "uint256" }, { "indexed": false, "name": "opratorName", "type": "string" }], "name": "pushWaterQualityInformation", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "name": "id", "type": "uint256" }, { "indexed": false, "name": "feedName", "type": "string" }, { "indexed": false, "name": "opratorName", "type": "string" }], "name": "pushFeedInformation", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "name": "id", "type": "uint256" }, { "indexed": false, "name": "opratorName", "type": "string" }], "name": "addCrab", "type": "event" }, { "constant": false, "inputs": [{ "name": "_id", "type": "uint256" }, { "name": "temperature", "type": "uint256" }, { "name": "wetness", "type": "uint256" }, { "name": "_opratorName", "type": "string" }], "name": "changeStoreInformation", "outputs": [{ "name": "res", "type": "bool" }], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [{ "name": "_id", "type": "uint256" }, { "name": "_feedName", "type": "string" }, { "name": "_opratorName", "type": "string" }], "name": "pushFeed", "outputs": [{ "name": "res", "type": "bool" }], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [{ "name": "_id", "type": "uint256" }, { "name": "from", "type": "string" }, { "name": "to", "type": "string" }, { "name": "_opratorName", "type": "string" }], "name": "pushTransfer", "outputs": [{ "name": "res", "type": "bool" }], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [{ "name": "_id", "type": "uint256" }, { "name": "_whetherQualified", "type": "bool" }, { "name": "_checkAgent", "type": "string" }, { "name": "_animalDensity", "type": "uint256" }, { "name": "_opratorName", "type": "string" }], "name": "pushWaterQuality", "outputs": [{ "name": "res", "type": "bool" }], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "payable": false, "stateMutability": "nonpayable", "type": "constructor" }, { "constant": true, "inputs": [{ "name": "", "type": "uint256" }], "name": "crabs", "outputs": [{ "name": "", "type": "address" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [{ "name": "", "type": "uint256" }], "name": "exist", "outputs": [{ "name": "", "type": "bool" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [{ "name": "id", "type": "uint256" }], "name": "existSuchCrab", "outputs": [{ "name": "res", "type": "bool" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [{ "name": "", "type": "uint256" }, { "name": "", "type": "uint256" }], "name": "feedInfo", "outputs": [{ "name": "time", "type": "uint256" }, { "name": "opratorName", "type": "string" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [{ "name": "id", "type": "uint256" }, { "name": "infoType", "type": "uint256" }], "name": "getLength", "outputs": [{ "name": "", "type": "uint256" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [{ "name": "", "type": "uint256" }, { "name": "", "type": "uint256" }], "name": "storeInfo", "outputs": [{ "name": "time", "type": "uint256" }, { "name": "opratorName", "type": "string" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [{ "name": "", "type": "uint256" }, { "name": "", "type": "uint256" }], "name": "transferInfo", "outputs": [{ "name": "time", "type": "uint256" }, { "name": "opratorName", "type": "string" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [{ "name": "", "type": "uint256" }, { "name": "", "type": "uint256" }], "name": "waterInfo", "outputs": [{ "name": "time", "type": "uint256" }, { "name": "opratorName", "type": "string" }], "payable": false, "stateMutability": "view", "type": "function" }],
+        traceAddress: '0x9351b78ac5ba688375ff822d0ff883b0d2f34ec0',
         crabAbi: [{ "constant": true, "inputs": [{ "name": "infoType", "type": "uint256" }], "name": "getLength", "outputs": [{ "name": "", "type": "uint256" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [{ "name": "", "type": "uint256" }], "name": "waterQualityInformation", "outputs": [{ "name": "whetherQualified", "type": "bool" }, { "name": "checkAgent", "type": "string" }, { "name": "animalDensity", "type": "uint256" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [{ "name": "", "type": "uint256" }], "name": "feedInformation", "outputs": [{ "name": "feedName", "type": "string" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [{ "name": "_feedName", "type": "string" }], "name": "changeFeed", "outputs": [{ "name": "res", "type": "bool" }], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [{ "name": "_whetherQualified", "type": "bool" }, { "name": "_checkAgent", "type": "string" }, { "name": "_animalDensity", "type": "uint256" }], "name": "changeWaterQuality", "outputs": [{ "name": "res", "type": "bool" }], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "getFeedInfo", "outputs": [{ "components": [{ "name": "feedName", "type": "string" }], "name": "", "type": "tuple[]" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [{ "name": "from", "type": "string" }, { "name": "to", "type": "string" }], "name": "changeTransfer", "outputs": [{ "name": "res", "type": "bool" }], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "poolId", "outputs": [{ "name": "", "type": "uint256" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "initInformation", "outputs": [{ "name": "time", "type": "uint256" }, { "name": "opratorName", "type": "string" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "getWaterInfo", "outputs": [{ "components": [{ "name": "whetherQualified", "type": "bool" }, { "name": "checkAgent", "type": "string" }, { "name": "animalDensity", "type": "uint256" }], "name": "", "type": "tuple[]" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [{ "name": "temperature", "type": "uint256" }, { "name": "wetness", "type": "uint256" }], "name": "changeStore", "outputs": [{ "name": "res", "type": "bool" }], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "id", "outputs": [{ "name": "", "type": "uint256" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "getTransferInfo", "outputs": [{ "components": [{ "name": "from", "type": "string" }, { "name": "to", "type": "string" }], "name": "", "type": "tuple[]" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "getStoreInfo", "outputs": [{ "components": [{ "name": "temperature", "type": "uint256" }, { "name": "wetness", "type": "uint256" }], "name": "", "type": "tuple[]" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [{ "name": "", "type": "uint256" }], "name": "storeInformation", "outputs": [{ "name": "temperature", "type": "uint256" }, { "name": "wetness", "type": "uint256" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [{ "name": "", "type": "uint256" }], "name": "transferInformation", "outputs": [{ "name": "from", "type": "string" }, { "name": "to", "type": "string" }], "payable": false, "stateMutability": "view", "type": "function" }, { "inputs": [{ "name": "_id", "type": "uint256" }, { "name": "_opratorName", "type": "string" }, { "name": "_poolId", "type": "uint256" }], "payable": false, "stateMutability": "nonpayable", "type": "constructor" }],
         traceContract: {}
     },
-    ourAddress: "0x168502a04529dDcF34b1b413d87c5134306B5620", //默认账户地址
+    ourAddress: "0x069abcf74ecd05ea06cb56c4780cd60237082c25", //默认账户地址
     init: function() {
         web3 = new Web3(web3.currentProvider);
         if (web3.isConnected()) {
@@ -39,53 +39,53 @@ window.app = {
         }
     },
     addCrab: function(_id, _opratorName, _poolId, callback) {
-        var privateKey = '5d31923340309002c7b07c9e2a01cd6e1618b1dff75bdf6b369bc9bb6472d0e1';
-        var data = app.contract.traceContract.addcrab.getData(_id, _opratorName, _poolId);
-        var pk = new Buffer(privateKey, 'hex');
-        //getNonce
+        // var privateKey = '5d31923340309002c7b07c9e2a01cd6e1618b1dff75bdf6b369bc9bb6472d0e1';
+        // var data = app.contract.traceContract.addcrab.getData(_id, _opratorName, _poolId);
+        // var pk = new Buffer(privateKey, 'hex');
+        // //getNonce
         // var ourAddress = "0x9C37fCa258063a6B8F02f332d72210D3cE4EE4dA";
-        var nonce = 0;
-        var contractAddress = '0xe4c95fd3ca448f7e3549234d08da1182ce831409';
-        // use sign transaction
-        function test(error, result) {
-            if (!error) {
-                var gasPrice = result;
-                //console.log(web3.toDecimal(gasPrice));
-                var gasLimit = 3000000000;
-                web3.eth.getTransactionCount(ourAddress, function(error, result) {
-                    if (!error) {
-                        nonce = result;
-                        var tx = new Tx({
-                            from: ourAddress,
-                            nonce: nonce,
-                            to: contractAddress,
-                            value: 0,
-                            data: data,
-                            gasPrice: web3.toDecimal(gasPrice),
-                            gasLimit: gasLimit
-                        });
-                        tx.sign(pk);
-                        var serializedTx = '0x' + tx.serialize().toString('hex');
-                        web3.eth.sendRawTransaction(serializedTx, function(err, hash) {
-                            if (!err) {
-                                ////console.log('transaction hash : ', hash);
-                                callback(hash);
-                            } else {
-                                console.error('error is ', err);
-                            }
-                        });
-                    } else
-                        console.log(error);
-                });
+        // var nonce = 0;
+        // var contractAddress = '0xe4c95fd3ca448f7e3549234d08da1182ce831409';
+        // // use sign transaction
+        // function test(error, result) {
+        //     if (!error) {
+        //         var gasPrice = result;
+        //         //console.log(web3.toDecimal(gasPrice));
+        //         var gasLimit = 3000000000;
+        //         web3.eth.getTransactionCount(ourAddress, function(error, result) {
+        //             if (!error) {
+        //                 nonce = result;
+        //                 var tx = new Tx({
+        //                     from: ourAddress,
+        //                     nonce: nonce,
+        //                     to: contractAddress,
+        //                     value: 0,
+        //                     data: data,
+        //                     gasPrice: web3.toDecimal(gasPrice),
+        //                     gasLimit: gasLimit
+        //                 });
+        //                 tx.sign(pk);
+        //                 var serializedTx = '0x' + tx.serialize().toString('hex');
+        //                 web3.eth.sendRawTransaction(serializedTx, function(err, hash) {
+        //                     if (!err) {
+        //                         ////console.log('transaction hash : ', hash);
+        //                         callback(hash);
+        //                     } else {
+        //                         console.error('error is ', err);
+        //                     }
+        //                 });
+        //             } else
+        //                 console.log(error);
+        //         });
 
-            }
-        }
+        //     }
+        // }
         app.contract.traceContract.addcrab.sendTransaction(_id, _opratorName, _poolId, { from: app.ourAddress }, function(error, result) {
             if (!error) {
-                console.log(result);
-                app.checkFinish(result);
+                //console.log(result);
+                callback(result);
             } else {
-                console.log(error);
+                //console.log(error);
             }
         });
     },
@@ -342,76 +342,45 @@ window.app = {
             //console.log(result);
         });
     },
-    pushFeed: function(id, feedName, operatorName) {
-        app.contract.traceContract.pushFeed(id, feedName, operatorName, { from: app.ourAddress }, app.callback);
-    },
-    pushWaterQuality: function(id, whetherQualified, checkAgent, animalDensity, opratorName) {
-        app.contract.traceContract.pushWaterQuality.sendTransaction(id, whetherQualified, checkAgenSt, animalDensity, opratorName, { from: app.ourAddress }, app.callback);
-    },
-    pushTransfer: function(id, from, to, opratorName) {
-        app.contract.traceContract.pushTransfer.sendTransaction(id, from, to, opratorName, { from: app.ourAddress }, app.callback);
-    },
-    pushStore: function(id, temperature, wetness, opratorName) {
-        app.contract.traceContract.changeStoreInformation.sendTransaction(id, temperature, wetness, opratorName, { from: app.ourAddress }, app.callback);
-    },
-    checkFinish:function(txhash)
-    {
-          
-        //返回的是从watch开始被确认的所有事件
-        // var event=app.contract.traceContract.allEvents({address:app.contract.traceAddress});
-        // event.watch(function(error,result){
-        //     if(!error)
-        //     {
-        //         console.log(result);
-        //     }
-        //     else
-        //     {
-        //         console.log(error);
-        //     }
-        // });
-        // event addCrab(uint id,string opratorName);
-
-        //某一个事件是否成功
-        var addcrabEvent=app.contract.traceContract.addCrab({transactionHash:txhash});
-        addcrabEvent.watch(function(error,result){
-            if(!error)
-            {
-                console.log("in add log");
-                console.log(result);
-            }
-            else
-            {
-                console.log(error);
+    pushFeed: function(id, feedName, operatorName,callback) {
+        app.contract.traceContract.pushFeed(id, feedName, operatorName, { from: app.ourAddress },function(error, result) {
+            if (!error) {
+                //console.log(result);
+                callback(result);
+            } else {
+                //console.log(error);
             }
         });
-
-        
-        // var pendingEvent=web3.eth.filter('latest');
-        //  pendingEvent.watch(function(error,result){
-        //     if(!error)
-        //     {
-        //         console.log(result);   //返回的是最新的block中的满足filter的block hash
-        //     }
-        //     else
-        //     {
-        //         console.log(error);
-        //     }
-        // });
-        // //对象里的地址是合约地址或者账户地址
-
-        //  var latest=web3.eth.filter({address:app.traceAddress});
-        //  latest.watch(function(error,result){
-        //     if(!error)
-        //     {
-        //         console.log("latest");
-        //         console.log(result);
-        //     }
-        //     else
-        //     {
-        //         console.log(error);
-        //     }
-        // });
-
+    },
+    pushWaterQuality: function(id, whetherQualified, checkAgent, animalDensity, opratorName,callback) {
+        app.contract.traceContract.pushWaterQuality.sendTransaction(id, whetherQualified, checkAgent, animalDensity, opratorName, { from: app.ourAddress }, function(error, result) {
+            if (!error) {
+                //console.log(result);
+                callback(result);
+            } else {
+                //console.log(error);
+            }
+        });
+    },
+    pushTransfer: function(id, from, to, opratorName,callback) {
+        app.contract.traceContract.pushTransfer.sendTransaction(id, from, to, opratorName, { from: app.ourAddress }, function(error, result) {
+            if (!error) {
+                //console.log(result);
+                callback(result);
+            } else {
+                //console.log(error);
+            }
+        });
+    },
+    pushStore: function(id, temperature, wetness, opratorName,callback) {
+        app.contract.traceContract.changeStoreInformation.sendTransaction(id, temperature, wetness, opratorName, { from: app.ourAddress }, function(error, result) {
+            if (!error) {
+                //console.log(result);
+                callback(result);
+            } else {
+                //console.log(error);
+            }
+        });
     }
 
 };
@@ -427,8 +396,6 @@ $(document).ready(
         // var ourPassword = 'domore0325';
         if (app.init()) {
             console.log("连接成功");
-            // app.checkFinish();
-            app.addCrab(2, 'lili', '890787');
         } else {
             alert("连接失败");
         }
@@ -436,7 +403,7 @@ $(document).ready(
         //Push.test();
         //app.unlockAccountAndExetract(ourAddress,ourPassword,app.fun);
         //app.getData();
-        
+        //app.addCrab(2, 'lili', '890787');
         //app.getInformation(1);
         //app.pushFeed(1,'超级健康的饲料','yapie');
         //app.pushWaterQuality(1,true,"北京水质检测机构",50,'yapie');
@@ -452,18 +419,6 @@ $(document).ready(
         // address='0xb1784fc623903b238b4a6ad0d993b0515ff7b7d3';
         // contract=app.getContract(abi,address);
         // contract.getArray.call(app.callback);
-        // $('#button').click(function() {
-        //     var to = $('#address').val();
-        //     //判断to是不是合法地址
-        //     if (!app.isAddress(to)) {
-        //         alert("无效地址")
-        //     } else {
-        //         var amount = $('#amount').val();
-        //         app.transfer(from, to, amount, fromPassword);
-        //         //查询到交易成功之后调用这个方法查询余额
-        //         //console.log("收款账户余额是" + app.getBalance(to));
-        //     }
-
-
-        });
-    // }
+        
+    }
+);

@@ -8,5 +8,8 @@
 {
 	height:300px;
 	width:100%;
-	border:solid 1px black;
+	/*border-bottom: solid 2px black;*/
+	overflow-y: scroll;
+
 }
+
