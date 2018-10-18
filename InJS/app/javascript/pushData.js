@@ -13,39 +13,87 @@ var Push =Push|| {
         var poolId = $("input[name='poolId']").val();
         var operator = $("#addNew input[name='operator']").val();
         // console.log(id + poolId + operator);
-        app.addCrab(id,operator,poolId,Push.callback);
+        app.checkExist(id,function(result){
+            if(result)
+            {
+                alert("已经存在id为 "+id+"  的闸蟹")
+            }
+            else
+            {
+                app.addCrab(id,operator,poolId,Push.callback);
+            }
+         })
+        
     },
     pushFeed:function () {
         var id =  $("#addFeed input[name='crabId']").val();
         var feedName = $("#addFeed input[name='feedName']").val();
         var operator = $("#addFeed input[name='operator']").val();
-        app.pushFeed(id,feedName,operator,Push.callback)
+        
+         app.checkExist(id,function(result){
+            if(result)
+            {
+                app.pushFeed(id,feedName,operator,Push.callback)
+            }
+            else
+            {
+                alert("不存在id为 "+id+"  的闸蟹")
+            }
+         })
         // console.log(id+feedName+operator);
     },
     pushWaterQuality:function () {
         var id =  $("#addWaterQuality input[name='crabId']").val();
-        var  whetherQualified = $("#addWaterQuality input[name='whetherQualified']").val();
+        var  whetherQualified = $('input:radio:checked').val();
         var checkAgent = $("#addWaterQuality input[name='checkAgent']").val();
         var density = $("#addWaterQuality input[name='density']").val();
         var operator = $("#addWaterQuality input[name='operator']").val();
-        app.pushWaterQuality(id,whetherQualified,checkAgent,density,operator,Push.callback);
+        app.checkExist(id,function(result){
+            if(result)
+            {
+                 app.pushWaterQuality(id,whetherQualified,checkAgent,density,operator,Push.callback);
+            }
+            else
+            {
+                alert("不存在id为 "+id+"  的闸蟹")
+            }
+         })
+       
         // app.pushwaterQuality(id,feedName,operator,Push.callback)
     },
     pushTransfer:function(){
-         var id =  $("#addTransfer input[name='crabId']").val();
+        var id =  $("#addTransfer input[name='crabId']").val();
         var from= $("#addTransfer input[name='from']").val();
         var to = $("#addTransfer input[name='to']").val();
         var operator = $("#addTransfer input[name='operator']").val();
         // console.log(id+"  "+from+"  "+to+"  "+operator);
-        app.pushTransfer(id,from,to,operator,Push.callback);
+        
+        app.checkExist(id,function(result){
+            if(result)
+            {
+                app.pushTransfer(id,from,to,operator,Push.callback);
+            }
+            else
+            {
+                alert("不存在id为 "+id+"  的闸蟹")
+            }
+         })
     },
     pushStore:function () {
         var id =  $("#addStore input[name='crabId']").val();
         var temperature= $("#addStore input[name='temperature']").val();
         var wetness = $("#addStore input[name='wetness']").val();
         var operator = $("#addStore input[name='operator']").val();
-        app.pushStore(id,temperature,wetness,operator,Push.callback);
-
+        app.checkExist(id,function(result){
+            if(result)
+            {
+                 app.pushStore(id,temperature,wetness,operator,Push.callback);
+            }
+            else
+            {
+                alert("不存在id为 "+id+"  的闸蟹")
+            }
+         })
     },
     callback:function(hash)
     {

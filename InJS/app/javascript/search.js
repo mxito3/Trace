@@ -176,6 +176,7 @@ function insertHtml(insertPosition,insertContent,insertQuatity,type)
 $(document).ready(function() {
 		//console.log(window.needsearchId);
 		 var id=$.cookie('needsearchCrabId');
-		 console.log(id);
-		 search(id);
+		
+         search(id)
+         
 });
