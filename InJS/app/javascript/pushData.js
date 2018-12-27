@@ -7,7 +7,19 @@
 //用来写数据上链的js
 
 var Push =Push|| {
-    addCrab: function addCrab() {
+    checkConnect:function ()
+    {
+        if(!app.checkAddress())
+        {
+            alert("请解锁matamask并切换到rinkeby之后刷新本页面");
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    },
+    addCrab: function () {
         //获得数据
         var id = $("#addNew input[name='crabId']").val();
         var poolId = $("input[name='poolId']").val();
@@ -103,31 +115,44 @@ var Push =Push|| {
 
 $(
     document).ready(function() {
-    	//app.addCrab(2, 'lili', '890787');
-		//app.pushFeed(1,'超级健康的饲料','yapie');
-        //app.pushWaterQuality(1,true,"北京水质检测机构",50,'yapie');
-       // app.pushTransfer(1,'天水','海南','yapie');
-        //app.pushStore(1,35,30,'yapie');
     $('#addNew div button').click(function() {
-        console.log("点击了")
-        Push.addCrab();
+        // console.log("点击了")
+        if(Push.checkConnect())
+        {
+            Push.addCrab();
+        }
+        
     });
 
     $('#addFeed div button').click(function() {
-        console.log("点击了")
+        // console.log("点击了")
+        if(!Push.checkConnect())
+        {
+            return;
+        }
+
         Push.pushFeed();
     });
 
      $('#addWaterQuality div button').click(function() {
-        console.log("点击了")
+        if(!Push.checkConnect())
+        {
+            return;
+        }
         Push.pushWaterQuality();
     });
      $('#addTransfer div button').click(function() {
-        console.log("点击了")
+        if(!Push.checkConnect())
+        {
+            return;
+        }
         Push.pushTransfer();
     });
      $('#addStore div button').click(function() {
-        console.log("点击了")
+        if(!Push.checkConnect())
+        {
+            return;
+        }
         Push.pushStore();
     });
     //隐藏和显示并改变悬浮的li的背景

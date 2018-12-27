@@ -16,7 +16,7 @@ window.app = {
             app.contract.traceContract = app.getContract(app.contract.traceAbi, app.contract.traceAddress);
             ////console.log(app.traceContract);
             app.ourAddress = web3.eth.accounts[0];
-
+            console.log("address is   "+app.ourAddress);
             return true;
         } else {
             return false;
@@ -304,7 +304,6 @@ window.app = {
         if (web3.isConnected()) {
             return true
         } else {
-            console.log("请使用metamask并解锁账户")
             return false
         }
     },
@@ -375,6 +374,17 @@ window.app = {
                 callback(false)
             }
         })
+    },
+    checkAddress:function()
+    {
+        if(app.ourAddress== undefined )
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
 
@@ -389,7 +399,7 @@ $(document).ready(
             console.log("连接成功");
             // app.checkExist(1)
         } else {
-            alert("连接失败");
+            alert("连接失败 请解锁metamask并切换到rinkeby");
         }
 
     }
